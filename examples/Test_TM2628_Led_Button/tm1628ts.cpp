@@ -31,35 +31,19 @@ TM1628ts::TM1628ts(int clockPin, int dataPin, int strobePin)
 
 void TM1628ts::init(int intensity)
 {
-//        Serial.println("init----000000111");
-        
         pinMode(tm_dio, OUTPUT);
-//        yield();
         pinMode(tm_clk, OUTPUT);
-//        yield();
         pinMode(tm_stb, OUTPUT);
-        
-
+ 
         digitalWrite(tm_stb, HIGH);
         digitalWrite(tm_clk, HIGH);
 
-//        yield();
-
-//        Serial.println("Init Xong");
-
         delay(200);
-//        Serial.begin(9600);
-
-//        Serial.println("init----1111111");
 
         tm_sendCommand(0x40); // command 2
 
-//        Serial.println("init----22222222");
-
         digitalWrite(tm_stb, LOW);
         tm_sendByte(0xc0); // command 3
-
-//        Serial.println("init----3333333");
         
         for (int i = 0; i < 14; i++)
                 tm_sendByte(0x00); // clear RAM

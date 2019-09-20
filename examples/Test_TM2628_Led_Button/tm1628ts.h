@@ -37,6 +37,7 @@
 #define   TM1628_PLAY    11 // 88
 #define   TM1628_TYP_W   13 // 104
 
+#define VIETDUINO_TM1628_MAX_DIGIT    25
 
 
 class TM1628ts
@@ -62,14 +63,21 @@ class TM1628ts
 // ___ ___ ___ ___ ___ ___ ___ ___
 //  0   0   1   1   1   1   1   1   = 0x3F (displays 0)
 //  0   0   0   0   0   1   1   0   = 0x48 (displays 1) ... and so on
-//  0   1   0   1   1   0   1   1   = 0x48 (displays 2) ... and so on
+//  0   1   0   1   1   0   1   1   = 0x5b (displays 2) ... and so on
 
-        const unsigned char tm_digit[18] = {0x3F, 0x06, 0x5b, 0x6b, 0x4d, // 0, 1, 2, 3, 4
-                                            0x2f, 0x3f, 0x68, 0x7f, 0x6f, // 5, 6, 7, 8, 9
-                                            0x7d, 0x1f, 0x36, 0x5b, 0x37, 0x35, // A, b, C, d, E, F
-                                            0x01, // minus sign
-                                            0x65 // degree sign
-                                           };
+        const unsigned char tm_digit[VIETDUINO_TM1628_MAX_DIGIT] = {0x3F, 0x06, 0x5b, 0x4f, 0x66, // 0, 1, 2, 3, 4
+                                                                    0x6d, 0x7d, 0x07, 0x7f, 0x6f, // 5, 6, 7, 8, 9
+                                                                    0x77, 0x7c, 0x39, 0x5e, 0x79, 0x71, // A, b, C, d, E, F
+                                                                    0x76, // H
+                                                                    0x38, // L
+                                                                    0x5c,    // o
+                                                                    0x73,   // P
+                                                                    0x3e,   // U
+                                                                    0x1c,   //u
+                                                                    0x54,   //n
+                                                                    0x50,   //r
+                                                                    0x58    // c
+                                                                   };
 
 //        __2__
 //       /     \

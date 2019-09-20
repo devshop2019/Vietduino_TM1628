@@ -37,14 +37,21 @@ void setup() {
   delay(1000);
 //  digitalWrite(13, LOW);
 
-  for (int i = 8; i > 0; i--) {
-    disp.putDigitAt(3, i);
+  for (int i = 0; i < VIETDUINO_TM1628_MAX_DIGIT; i++) {
+//    disp.putDigitAt(3, i);
 //    disp.putNumberAt(i, 1, false, 2);
     
 //    disp.putDigitAt(16, i);
-    ShowREG();
-    disp.writeBuffer();
-    delay(10);
+//    ShowREG();
+//    disp.writeBuffer();
+
+    disp.tm_buffer[6] = disp.tm_digit[i];
+    disp.tm_buffer[0] = disp.tm_digit[i];
+    disp.tm_buffer[2] = disp.tm_digit[i];
+  
+    disp.writeBuffer(); // command 3
+  
+    delay(1000);
     Serial.println("Start3333333333333");
   }
 
